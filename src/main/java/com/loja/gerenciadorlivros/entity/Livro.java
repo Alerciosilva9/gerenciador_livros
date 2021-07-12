@@ -7,6 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+
+import com.sun.istack.NotNull;
 
 
 
@@ -18,23 +23,24 @@ public class Livro {
 	@GeneratedValue(strategy  = GenerationType.IDENTITY)
 	private long id;
 	
-	@Column(nullable = false, unique = true)
+	@NotEmpty(message = "O campo nome nao pode ser vazio")
 	private String nome;
 	
-	@Column(nullable = false)
-	private Integer paginas;
+	@Min(value=1, message="o livro deve possuir no minimo 1 pagina") 
+	private long paginas;
 	
-	@Column(nullable = false)
+	@Min(value=1, message="o livro deve possuir no minimo 1 capitulo")
 	private Integer capitulos;
 	
-	@Column(nullable = false)
+	@NotEmpty()
 	private String isbn;
 	
-	@Column(nullable = false)
+	@NotEmpty
 	private String nomeeditora;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_autor")
+	@NotNull
 	private Autor autor;
 
 	public long getId() {
@@ -53,7 +59,7 @@ public class Livro {
 		this.nome = nome;
 	}
 
-	public Integer getPaginas() {
+	public long getPaginas() {
 		return paginas;
 	}
 
