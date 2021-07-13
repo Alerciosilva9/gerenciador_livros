@@ -11,7 +11,16 @@ import javax.persistence.Id;
 @Entity
 
 public class Autor {
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	
+	@Column(nullable = false, unique = true)
+	private String nome;
+	
+	@Column(nullable = false)
+	private Integer idade; 
 	
 	@Override
 	public int hashCode() {
@@ -58,14 +67,4 @@ public class Autor {
 	public void setIdade(Integer idade) {
 		this.idade = idade;
 	}
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	
-	@Column(nullable = false, unique = true)
-	private String nome;
-	
-	@Column(nullable = false)
-	private Integer idade; 
 }
