@@ -24,6 +24,6 @@ CREATE TABLE Livro(
 insert into Autor(nome,idade) values ('carlos',1);
 
 
-INSERT INTO Autor(nome,idade) VALUES (nextval('hibernate_sequence'), 'serginho', 12)
+INSERT INTO Autor(nome,idade) VALUES ('serginho', 12);
 
 
