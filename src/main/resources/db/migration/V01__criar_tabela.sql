@@ -1,20 +1,26 @@
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+CREATE SEQUENCE Autor_seq;
+
 CREATE TABLE Autor(
-	id BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+	id BIGINT PRIMARY KEY DEFAULT NEXTVAL ('Autor_seq'),
     nome VARCHAR(50) NOT NULL,
-   	idade BIGINT(20) NOT NULL
-) ENGINE=innoDB DEFAULT CHARSET=utf8; 
+   	idade BIGINT NOT NULL
+) ; 
+
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+CREATE SEQUENCE Livro_seq;
 
 CREATE TABLE Livro(
-    id BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+    id BIGINT PRIMARY KEY DEFAULT NEXTVAL ('Livro_seq'),
     nome VARCHAR(50) NOT NULL,
-    paginas BIGINT(20) NOT NULL,
-    capitulos  BIGINT(20) NOT NULL,
+    paginas BIGINT NOT NULL,
+    capitulos  BIGINT NOT NULL,
     isbn VARCHAR(50) NOT NULL,
     nomeeditora VARCHAR(50) NOT NULL,
-    id_autor BIGINT(20) NOT NULL,
+    id_autor BIGINT NOT NULL,
      FOREIGN KEY (id_autor) references Autor(id)
-) ENGINE=innoDB DEFAULT CHARSET=utf8; 
+) ; 
 
-insert into Autor(nome,idade) values ('carlos',19);
+insert into Autor(nome,idade) values ('carlos',1);
 
 
