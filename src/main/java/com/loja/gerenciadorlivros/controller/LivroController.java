@@ -25,9 +25,12 @@ public class LivroController {
 
 	@Autowired
 	LivroRepository livrorepository;
+
+	
 	
 	@PostMapping
 	public ResponseEntity<Object> create(@RequestBody @Valid Livro livro, HttpServletResponse response) {
+		
 		Livro livrosalvo = livrorepository.save(livro);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{Id}").buildAndExpand(livrosalvo.getId()).toUri();
 		response.setHeader("Locale", uri.toASCIIString());

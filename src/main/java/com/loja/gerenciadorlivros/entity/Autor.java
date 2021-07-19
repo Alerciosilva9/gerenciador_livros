@@ -13,7 +13,7 @@ import javax.persistence.Id;
 public class Autor {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long id;
 	
 	@Column(nullable = false, unique = true)

@@ -22,6 +22,8 @@ CREATE TABLE Livro(
 ) ; 
 
 insert into Autor(nome,idade) values ('carlos',1);
-insert into Livro(nome,paginas,capitulos,isbn,nomeeditora,id_autor) values ('carlos',12,12,'123','abril',1);
+
+
+INSERT INTO Autor(nome,idade) VALUES (nextval('carlos'), 23)
 
 
