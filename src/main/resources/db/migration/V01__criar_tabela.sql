@@ -2,7 +2,7 @@
 CREATE SEQUENCE Autor_seq;
 
 CREATE TABLE Autor(
-	id BIGINT PRIMARY KEY DEFAULT NEXTVAL ('Autor_seq'),
+	id_autor BIGINT PRIMARY KEY DEFAULT NEXTVAL ('Autor_seq'),
     nome VARCHAR(50) NOT NULL,
    	idade BIGINT NOT NULL
 ) ; 
@@ -18,12 +18,10 @@ CREATE TABLE Livro(
     isbn VARCHAR(50) NOT NULL,
     nomeeditora VARCHAR(50) NOT NULL,
     id_autor BIGINT NOT NULL,
-     FOREIGN KEY (id_autor) references Autor(id)
+     FOREIGN KEY (id_autor) references Autor(id_autor)
 ) ; 
 
 insert into Autor(nome,idade) values ('carlos',1);
-
-
 INSERT INTO Autor(nome,idade) VALUES ('serginho', 12);
 
 
