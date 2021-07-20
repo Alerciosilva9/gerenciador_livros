@@ -21,7 +21,7 @@ CREATE TABLE Livro(
      FOREIGN KEY (id_autor) references Autor(id_autor)
 ) ; 
 
-insert into Autor(id,nome,idade) values (1,'carlos',12);
+insert into Autor(id_autor,nome,idade) values (1,'carlos',12);
 
 
 
