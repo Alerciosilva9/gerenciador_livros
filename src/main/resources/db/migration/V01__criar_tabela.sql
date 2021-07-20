@@ -20,7 +20,7 @@ CREATE TABLE Livro(
     id_autor BIGINT NOT NULL
 ) ; 
 
-ALTER TABLE course
+ALTER TABLE Livro
   ADD CONSTRAINT fk_livro_autor FOREIGN KEY (autor_id) REFERENCES Autor;
 
 insert into Autor(id,nome,idade) values (1,'carlos',12);
