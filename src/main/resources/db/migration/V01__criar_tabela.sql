@@ -21,7 +21,7 @@ CREATE TABLE Livro(
 ) ; 
 
 ALTER TABLE Livro
-  ADD CONSTRAINT fk_livro_autor FOREIGN KEY (autor_id) REFERENCES Autor;
+  ADD CONSTRAINT fk_livro_autor FOREIGN KEY (id_autor) REFERENCES Autor;
 
 insert into Autor(id,nome,idade) values (1,'carlos',12);
 
