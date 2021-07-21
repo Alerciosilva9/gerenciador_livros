@@ -16,7 +16,9 @@ public class LivroService {
 	AutorRepository autorrepository;
 
 	public Livro cadastrarlivro(Livro novolivro) {
-		if(autorrepository.findById(novolivro.getAutor().getId()).orElse(null)==null) {
+		long aux = novolivro.getAutor().getId();
+		System.out.println("find with id - "+aux);
+		if(autorrepository.findById(aux).orElse(null)==null) {
 			return null;
 		}else{
 			return livrorepository.save(novolivro);

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,11 +19,15 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.loja.gerenciadorlivros.entity.Livro;
 import com.loja.gerenciadorlivros.repository.LivroRepository;
+import com.loja.gerenciadorlivros.service.LivroService;
 
 @RestController
 @RequestMapping("/livros")
 public class LivroController {
 
+	@Autowired
+	LivroService livroservice;
+	
 	@Autowired
 	LivroRepository livrorepository;
 
@@ -30,12 +35,16 @@ public class LivroController {
 	
 	@PostMapping
 	public ResponseEntity<Object> create(@RequestBody @Valid Livro livro, HttpServletResponse response) {
-		
-		Livro livrosalvo = livrorepository.save(livro);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{Id}").buildAndExpand(livrosalvo.getId()).toUri();
-		response.setHeader("Locale", uri.toASCIIString());
-		return ResponseEntity.created(uri).body(livrosalvo);
+		Livro livrosalvo = livroservice.cadastrarlivro(livro);
+		if(livrosalvo!=null) {
+			URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{Id}").buildAndExpand(livrosalvo.getId()).toUri();
+			response.setHeader("Locale", uri.toASCIIString());
+			return ResponseEntity.created(uri).body(livrosalvo);
+		}else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Id informado nao existe");
+		}
 	}
+	
 	@GetMapping()
 	public List<Livro> listarlivros(){
 		return livrorepository.findAll();
